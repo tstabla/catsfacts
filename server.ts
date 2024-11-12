@@ -17,6 +17,9 @@ export function app(): express.Express {
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
 
+  server.use(express.json());
+  server.use(express.urlencoded({ extended: true }));
+
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
   // Serve static files from /browser
@@ -39,6 +42,11 @@ export function app(): express.Express {
       })
       .then((html) => res.send(html))
       .catch((err) => next(err));
+  });
+
+  server.post('/api/validate-login', async (req: express.Request, res: express.Response) => {
+    const loginValidator = await import('./server/login-validation.service');
+    loginValidator.validateLogin(req, res);
   });
 
   return server;

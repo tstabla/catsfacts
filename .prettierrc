@@ -1,0 +1,22 @@
+{
+  "tabWidth": 2,
+  "printWidth": 120,
+  "experimentalTernaries": true,
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": "src/app/**/*.html",
+      "options": {
+        "attributeGroups": ["$ANGULAR"],
+        "parser": "angular"
+      }
+    }
+  ],
+  "plugins": [
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-organize-attributes",
+    "prettier-plugin-tailwindcss"
+  ],
+  "importOrderParserPlugins": ["typescript", "decorators-legacy"],
+  "attributeSort": "ASC"
+}
